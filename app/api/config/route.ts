@@ -4,6 +4,8 @@ import { getServerSideConfig } from "../../config/server";
 
 const serverConfig = getServerSideConfig();
 
+const CHATBASE_URL = process.env.NEXT_PUBLIC_CHATBASE_URL;
+
 // Danger! Do not hard code any secret value here!
 // 警告！不要在这里写入任何敏感信息！
 const DANGER_CONFIG = {
