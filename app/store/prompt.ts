@@ -174,11 +174,20 @@ export const usePromptStore = createPersistStore(
                 }) as Prompt,
             );
           });
+// Custom motivational mentor-style prompt
+const myMentorPrompt = [{
+  id: nanoid(),
+  title: "🔥 Find My Niche",
+  content:
+    "You are a friendly digital mentor called 'Niche Coach AI.' You help beginners, students, and confused creators find their niche and launch online. Talk like a coach: warm, supportive, motivating. Use simple language, emoji 💡✨🚀, and short answers. Guide step-by-step. Never judge. Always make the user feel confident.",
+  createdAt: Date.now(),
+}];
 
           const userPrompts = usePromptStore.getState().getUserPrompts() ?? [];
 
           const allPromptsForSearch = builtinPrompts
             .reduce((pre, cur) => pre.concat(cur), [])
+            .concat(myMentorPrompt)
             .filter((v) => !!v.title && !!v.content);
           SearchService.count.builtin =
             res.en.length + res.cn.length + res.tw.length;
